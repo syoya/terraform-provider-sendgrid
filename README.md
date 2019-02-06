@@ -16,13 +16,13 @@ Sendgrid provider plugin for Terraform.
 * Download this repo:
 
 ```shell
-$ go get github.com/opteemister/terraform-provider-sendgrid
+$ go get github.com/syoya/terraform-provider-sendgrid
 ```
 
 * Install the dependencies:
 
 ```shell
-$ cd $GOPATH/src/github.com/opteemister/terraform-provider-sendgrid
+$ cd $GOPATH/src/github.com/syoya/terraform-provider-sendgrid
 $ go get
 ```
 

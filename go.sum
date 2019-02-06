@@ -97,10 +97,6 @@ github.com/oklog/run v1.0.0/go.mod h1:dlhp/R75TPv97u0XWUtDeV/lRKWPKSdTuV0TZvrmrQ
 github.com/onsi/ginkgo v1.6.0/go.mod h1:lLunBs/Ym6LB5Z9jYTR76FiuTmxDTDusOGeTQH+WWjE=
 github.com/onsi/ginkgo v1.7.0/go.mod h1:lLunBs/Ym6LB5Z9jYTR76FiuTmxDTDusOGeTQH+WWjE=
 github.com/onsi/gomega v1.4.3/go.mod h1:ex+gbHU/CVuBBDIJjb2X0qEXbFg53c61hWP/1CpauHY=
-github.com/opteemister/terraform-client-sendgrid v0.0.0-20170129120824-b2b90f45f583 h1:GZNPkyctvTkY5H5DJkNEdzCxt9PRCJyQbEHo8rDcRAk=
-github.com/opteemister/terraform-client-sendgrid v0.0.0-20170129120824-b2b90f45f583/go.mod h1:8CEgRCOK3tbFfgqcZKeP2m7wW0wMLLNRBlXVcWEQzVI=
-github.com/opteemister/terraform-provider-sendgrid v0.0.0-20170305210914-691732e4390f h1:2tnqGvqKKBSKx/5j8hH4JfeDj/GjenZZhYRdwsjSq3U=
-github.com/opteemister/terraform-provider-sendgrid v0.0.0-20170305210914-691732e4390f/go.mod h1:gwebSUP+MuEAEwhWE04PByoRtyvIFMb+LYVwJKNjobI=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/posener/complete v1.1.1 h1:ccV59UEOTzVDnDUEFdT95ZzHVZ+5+158q8+SJb2QV5w=
 github.com/posener/complete v1.1.1/go.mod h1:em0nMJCgc9GFtwrmVmEMR/ZL6WyhyjMBndrE9hABlRI=
@@ -113,6 +109,10 @@ github.com/spf13/pflag v1.0.2/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnIn
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
+github.com/syoya/terraform-client-sendgrid v0.0.0-20170129120824-b2b90f45f583 h1:Qcr5qYn0p7Gl9bM7ydO7TqrZjGylpLaiFaH7lcGCigE=
+github.com/syoya/terraform-client-sendgrid v0.0.0-20170129120824-b2b90f45f583/go.mod h1:RUdKvKAD3zyG236tyfY104BhT13XkKQJ3fBfi5mesnk=
+github.com/syoya/terraform-client-sendgrid v0.0.0-20190206030831-4fb72ef74a68 h1:uwNbsZ8d8cjfZbFNYeCKwXqjKnfe3qaT/LFAHncN6zY=
+github.com/syoya/terraform-client-sendgrid v0.0.0-20190206030831-4fb72ef74a68/go.mod h1:dbiepj8SU3CVvqnFgM8BigHrPf73jkAJgIc57B2dyx4=
 github.com/ulikunitz/xz v0.5.5 h1:pFrO0lVpTBXLpYw+pnLj6TbvHuyjXMfjGeCwSqCVwok=
 github.com/ulikunitz/xz v0.5.5/go.mod h1:2bypXElzHzzJZwzH67Y6wb67pO62Rzfn7BSiF4ABRW8=
 github.com/vmihailenco/msgpack v3.3.3+incompatible/go.mod h1:fy3FlTQTDXWkZ7Bh6AcGMlsjHatGryHQYUTf1ShIgkk=

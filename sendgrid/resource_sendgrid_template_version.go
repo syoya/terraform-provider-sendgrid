@@ -8,8 +8,8 @@ import (
 	"strings"
 
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/mitchellh/go-homedir"
-	"github.com/opteemister/terraform-client-sendgrid"
+	homedir "github.com/mitchellh/go-homedir"
+	sendgrid_client "github.com/syoya/terraform-client-sendgrid"
 )
 
 func resourceSendgridTemplateVersion() *schema.Resource {

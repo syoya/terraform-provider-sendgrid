@@ -15,10 +15,7 @@ require (
 	github.com/mitchellh/copystructure v1.0.0 // indirect
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/mitchellh/hashstructure v1.0.0 // indirect
-	github.com/opteemister/terraform-client-sendgrid v0.0.0-20170129120824-b2b90f45f583
-	github.com/opteemister/terraform-provider-sendgrid v0.0.0-20170305210914-691732e4390f
-	github.com/sendgrid/rest v2.4.1+incompatible // indirect
-	github.com/sendgrid/sendgrid-go v3.4.1+incompatible // indirect
+	github.com/syoya/terraform-client-sendgrid v0.0.0-20190206030831-4fb72ef74a68
 	github.com/zclconf/go-cty v0.0.0-20190201220620-4ca19710f056 // indirect
 	golang.org/x/crypto v0.0.0-20190131182504-b8fe1690c613 // indirect
 	golang.org/x/net v0.0.0-20190125091013-d26f9f9a57f3 // indirect

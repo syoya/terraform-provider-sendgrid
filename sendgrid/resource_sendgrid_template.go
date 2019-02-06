@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/opteemister/terraform-client-sendgrid"
+	sendgrid_client "github.com/syoya/terraform-client-sendgrid"
 )
 
 func resourceSendgridTemplate() *schema.Resource {
@@ -25,16 +25,16 @@ func resourceSendgridTemplate() *schema.Resource {
 				Required: true,
 			},
 			"generation": &schema.Schema{
-                Type:     schema.TypeString,
-                Optional: true,
-            },
+				Type:     schema.TypeString,
+				Optional: true,
+			},
 		},
 	}
 }
 
 func buildTemplateStruct(d *schema.ResourceData) *sendgrid_client.Template {
 	m := sendgrid_client.Template{
-		Name: d.Get("name").(string),
+		Name:       d.Get("name").(string),
 		Generation: d.Get("generation").(string),
 	}
 

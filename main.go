@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/hashicorp/terraform/plugin"
-	"github.com/opteemister/terraform-provider-sendgrid/sendgrid"
+	"github.com/syoya/terraform-provider-sendgrid/sendgrid"
 )
 
 func main() {
