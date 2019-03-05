@@ -27,6 +27,7 @@ func resourceSendgridTemplate() *schema.Resource {
 			"generation": &schema.Schema{
 				Type:     schema.TypeString,
 				Optional: true,
+				Default:  "dynamic",
 			},
 		},
 	}
