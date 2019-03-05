@@ -5,6 +5,7 @@ import (
 	"encoding/base64"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"strings"
 
 	"github.com/hashicorp/terraform/helper/schema"
@@ -109,7 +110,6 @@ func resourceSendgridTemplateVersionExists(d *schema.ResourceData, meta interfac
 }
 
 func resourceSendgridTemplateVersionCreate(d *schema.ResourceData, meta interface{}) error {
-
 	client := meta.(*sendgrid_client.Client)
 
 	m, err := buildTemplateVersionStruct(d)
@@ -130,6 +130,16 @@ func resourceSendgridTemplateVersionCreate(d *schema.ResourceData, meta interfac
 }
 
 func resourceSendgridTemplateVersionRead(d *schema.ResourceData, meta interface{}) error {
+	err := existsFileContent(d.Get("html_content_file").(string))
+	if err != nil {
+		return err
+	}
+	
+	err = existsFileContent(d.Get("plain_content_file").(string))
+	if err != nil {
+		return err
+	}
+
 	client := meta.(*sendgrid_client.Client)
 
 	fmt.Println("Read template_version")
@@ -185,10 +195,26 @@ func resourceSendgridTemplateVersionDelete(d *schema.ResourceData, meta interfac
 }
 
 func resourceSendgridTemplateVersionImport(d *schema.ResourceData, meta interface{}) ([]*schema.ResourceData, error) {
+	client := meta.(*sendgrid_client.Client)
+
 	fmt.Println("Import template_version")
-	if err := resourceSendgridTemplateVersionRead(d, meta); err != nil {
-		return nil, fmt.Errorf("error importing TemplateVersion: %s", err.Error())
+	m, err := client.GetTemplateVersion(d.Get("template_id").(string), d.Id())
+	if err != nil {
+		return nil, fmt.Errorf("error reading template_version: %s", err.Error())
 	}
+
+	remoteHTMLHash := getHash(string(m.HtmlContent))
+	remotePlainHash := getHash(string(m.PlainContent))
+
+	stateHTMLHash := d.Get("html_content_hash")
+	statePlainHash := d.Get("plain_content_hash")
+
+	fmt.Printf("[DEBUG] TemplateVersion: %s ----- %s", remoteHTMLHash, stateHTMLHash)
+	fmt.Printf("[DEBUG] TemplateVersion: %s ----- %s", remotePlainHash, statePlainHash)
+
+	d.Set("html_content_hash", remoteHTMLHash)
+	d.Set("plain_content_hash", remotePlainHash)
+
 	return []*schema.ResourceData{d}, nil
 }
 
@@ -235,12 +261,22 @@ func loadFileContent(v string) ([]byte, error) {
 	return fileContent, nil
 }
 
+// existsFileContent check if a file exists
+func existsFileContent(v string) error {
+	filename, err := homedir.Expand(v)
+	if err != nil {
+		fmt.Printf("File %s can't be expand. %s", v, err)
+		return err
+	}
+
+	_, err = os.Stat(filename)
+	return err
+}
+
 func getHash(data string) string {
 	sha := sha256.New()
 	sha.Write([]byte(data))
 	shaSum := sha.Sum(nil)
 	encoded := base64.StdEncoding.EncodeToString(shaSum[:])
-	//h := md5.New()
-	//io.WriteString(h, data)
-	return encoded //fmt.Sprintf("%x", h.Sum(nil))
+	return encoded
 }
