@@ -44,47 +44,11 @@ func resourceSendgridTemplateVersion() *schema.Resource {
 			"plain_content_file": &schema.Schema{
 				Type:     schema.TypeString,
 				Required: true,
-				DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
-					textContent, err := loadFileContent(d.Get("plain_content_file").(string))
-					if err != nil {
-						panic(err)
-					}
-
-					localSha256Sum := getHash(string(textContent))
-
-					if localSha256Sum == "" {
-						return false
-					}
-
-					if old != localSha256Sum {
-						return false
-					}
-
-					return true
-				},
 			},
 			"html_content_hash": &schema.Schema{
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
-				DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
-					htmlContent, err := loadFileContent(d.Get("html_content_file").(string))
-					if err != nil {
-						panic(err)
-					}
-
-					localSha256Sum := getHash(string(htmlContent))
-
-					if localSha256Sum == "" {
-						return false
-					}
-
-					if old != localSha256Sum {
-						return false
-					}
-
-					return true
-				},
 			},
 			"plain_content_hash": &schema.Schema{
 				Type:     schema.TypeString,
@@ -169,7 +133,7 @@ func resourceSendgridTemplateVersionRead(d *schema.ResourceData, meta interface{
 	if err != nil {
 		return err
 	}
-
+	
 	err = existsFileContent(d.Get("plain_content_file").(string))
 	if err != nil {
 		return err
