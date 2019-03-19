@@ -44,8 +44,6 @@ func resourceSendgridTemplateVersion() *schema.Resource {
 			"plain_content_file": &schema.Schema{
 				Type:     schema.TypeString,
 				Required: true,
-				ForceNew: true,
-				Default:  "different hash - plain",
 				DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
 					textContent, err := loadFileContent(d.Get("plain_content_file").(string))
 					if err != nil {
@@ -69,8 +67,6 @@ func resourceSendgridTemplateVersion() *schema.Resource {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
-				ForceNew: true,
-				Default:  "different hash - html",
 				DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
 					htmlContent, err := loadFileContent(d.Get("html_content_file").(string))
 					if err != nil {
