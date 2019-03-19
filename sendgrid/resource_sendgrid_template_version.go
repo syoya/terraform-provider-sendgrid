@@ -48,7 +48,7 @@ func resourceSendgridTemplateVersion() *schema.Resource {
 			"html_content_hash": &schema.Schema{
 				Type:     schema.TypeString,
 				Optional: true,
-				Computed: false,
+				Computed: true,
 				ForceNew: true,
 				Default:  "different hash - html",
 				DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
@@ -73,7 +73,7 @@ func resourceSendgridTemplateVersion() *schema.Resource {
 			"plain_content_hash": &schema.Schema{
 				Type:     schema.TypeString,
 				Optional: true,
-				Computed: false,
+				Computed: true,
 				ForceNew: true,
 				Default:  "different hash - plain",
 				DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
