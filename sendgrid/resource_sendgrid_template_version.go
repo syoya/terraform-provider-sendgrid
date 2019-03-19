@@ -22,6 +22,7 @@ func resourceSendgridTemplateVersion() *schema.Resource {
 		Importer: &schema.ResourceImporter{
 			State: resourceSendgridTemplateVersionImport,
 		},
+		CustomizeDiff: resourceSendgridTemplateVersionCustomizeDiff,
 
 		Schema: map[string]*schema.Schema{
 			"template_id": &schema.Schema{
@@ -189,6 +190,34 @@ func resourceSendgridTemplateVersionImport(d *schema.ResourceData, meta interfac
 		return nil, fmt.Errorf("error importing TemplateVersion: %s", err.Error())
 	}
 	return []*schema.ResourceData{d}, nil
+}
+
+func resourceSendgridTemplateVersionCustomizeDiff(d *schema.ResourceDiff, meta interface{}) error {
+	stateHTMLHash := d.Get("html_content_hash").(string)
+	htmlContent, err := loadFileContent(d.Get("html_content_file").(string))
+	if err != nil {
+		return err
+	}
+	localHTMLHash := getHash(string(htmlContent))
+	if stateHTMLHash != localHTMLHash {
+		if err := d.SetNew("html_content_hash", localHTMLHash); err != nil {
+			return err
+		}
+	}
+
+	statePlainHash := d.Get("plain_content_hash").(string)
+	plainContent, err := loadFileContent(d.Get("plain_content_file").(string))
+	if err != nil {
+		return err
+	}
+	localPlainHash := getHash(string(plainContent))
+	if statePlainHash != localPlainHash {
+		if err := d.SetNew("plain_content_hash", localPlainHash); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 // loadFileContent returns contents of a file in a given path
