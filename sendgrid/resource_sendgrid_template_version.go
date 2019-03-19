@@ -138,16 +138,16 @@ func resourceSendgridTemplateVersionRead(d *schema.ResourceData, meta interface{
 		return fmt.Errorf("error reading template_version: %s", err.Error())
 	}
 
-	remoteHtmlHash := getHash(string(m.HtmlContent))
+	remoteHTMLHash := getHash(string(m.HtmlContent))
 	remotePlainHash := getHash(string(m.PlainContent))
 
-	stateHtmlHash := d.Get("html_content_hash")
+	stateHTMLHash := d.Get("html_content_hash")
 	statePlainHash := d.Get("plain_content_hash")
 
-	fmt.Printf("[DEBUG] TemplateVersion: %s ----- %s", remoteHtmlHash, stateHtmlHash)
+	fmt.Printf("[DEBUG] TemplateVersion: %s ----- %s", remoteHTMLHash, stateHTMLHash)
 	fmt.Printf("[DEBUG] TemplateVersion: %s ----- %s", remotePlainHash, statePlainHash)
 
-	d.Set("html_content_hash", remoteHtmlHash)
+	d.Set("html_content_hash", remoteHTMLHash)
 	d.Set("plain_content_hash", remotePlainHash)
 	return nil
 }
