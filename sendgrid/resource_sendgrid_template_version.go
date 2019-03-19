@@ -52,14 +52,12 @@ func resourceSendgridTemplateVersion() *schema.Resource {
 				ForceNew: true,
 				Default:  "different hash - html",
 				DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
-					localSha256Sum := ""
-
 					htmlContent, err := loadFileContent(d.Get("html_content_file").(string))
 					if err != nil {
-						localSha256Sum = ""
+						panic(err)
 					}
 
-					localSha256Sum = getHash(string(htmlContent))
+					localSha256Sum := getHash(string(htmlContent))
 
 					if localSha256Sum == "" {
 						return false
@@ -79,14 +77,12 @@ func resourceSendgridTemplateVersion() *schema.Resource {
 				ForceNew: true,
 				Default:  "different hash - plain",
 				DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
-					localSha256Sum := ""
-
 					textContent, err := loadFileContent(d.Get("plain_content_file").(string))
 					if err != nil {
-						localSha256Sum = ""
+						panic(err)
 					}
 
-					localSha256Sum = getHash(string(textContent))
+					localSha256Sum := getHash(string(textContent))
 
 					if localSha256Sum == "" {
 						return false
