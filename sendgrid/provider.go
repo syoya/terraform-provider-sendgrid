@@ -1,15 +1,14 @@
 package sendgrid
 
 import (
-	"errors"
 	"fmt"
 	"log"
 
+	"errors"
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
 )
 
-// Provider terraform.ResourceProvider
 func Provider() terraform.ResourceProvider {
 	return &schema.Provider{
 		Schema: map[string]*schema.Schema{

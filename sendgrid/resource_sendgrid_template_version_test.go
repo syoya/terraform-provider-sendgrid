@@ -137,8 +137,8 @@ func TestAccSendgridTemplateVersion_Updated(t *testing.T) {
 func TestAccSendgridTemplateVersion_UpdatedContent(t *testing.T) {
 	content1 := "content1"
 	content2 := "content2"
-	plainContent1 := "plain_content1"
-	plainContent2 := "plain_content2"
+	plain_content1 := "plain_content1"
+	plain_content2 := "plain_content2"
 
 	resource.Test(t, resource.TestCase{
 		PreCheck:     func() { testAccPreCheck(t) },
@@ -148,7 +148,7 @@ func TestAccSendgridTemplateVersion_UpdatedContent(t *testing.T) {
 			resource.TestStep{
 				PreConfig: func() {
 					writeContent("./resources/temp_template.html", content1)
-					writeContent("./resources/temp_template_plain.html", plainContent1)
+					writeContent("./resources/temp_template_plain.html", plain_content1)
 				},
 				Config: testAccCheckSendgridTemplateVersionConfigUpdatedContent,
 				Check: resource.ComposeTestCheckFunc(
@@ -160,7 +160,7 @@ func TestAccSendgridTemplateVersion_UpdatedContent(t *testing.T) {
 					resource.TestCheckResourceAttr(
 						"sendgrid_template_version.foo", "html_content_hash", getHash(content1)),
 					resource.TestCheckResourceAttr(
-						"sendgrid_template_version.foo", "plain_content_hash", getHash(plainContent1)),
+						"sendgrid_template_version.foo", "plain_content_hash", getHash(plain_content1)),
 					resource.TestCheckResourceAttr(
 						"sendgrid_template_version.foo", "active", "true"),
 				),
@@ -168,7 +168,7 @@ func TestAccSendgridTemplateVersion_UpdatedContent(t *testing.T) {
 			resource.TestStep{
 				PreConfig: func() {
 					writeContent("./resources/temp_template.html", content2)
-					writeContent("./resources/temp_template_plain.html", plainContent2)
+					writeContent("./resources/temp_template_plain.html", plain_content2)
 				},
 				Config: testAccCheckSendgridTemplateVersionConfigUpdatedContent,
 				Check: resource.ComposeTestCheckFunc(
@@ -180,7 +180,7 @@ func TestAccSendgridTemplateVersion_UpdatedContent(t *testing.T) {
 					resource.TestCheckResourceAttr(
 						"sendgrid_template_version.foo", "html_content_hash", getHash(content2)),
 					resource.TestCheckResourceAttr(
-						"sendgrid_template_version.foo", "plain_content_hash", getHash(plainContent2)),
+						"sendgrid_template_version.foo", "plain_content_hash", getHash(plain_content2)),
 					resource.TestCheckResourceAttr(
 						"sendgrid_template_version.foo", "active", "true"),
 				),
