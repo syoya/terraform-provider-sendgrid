@@ -49,7 +49,7 @@ func resourceSendgridTemplateVersion() *schema.Resource {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: false,
-				ForceNew: false,
+				ForceNew: true,
 				DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
 					localSha256Sum := ""
 
@@ -75,7 +75,7 @@ func resourceSendgridTemplateVersion() *schema.Resource {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: false,
-				ForceNew: false,
+				ForceNew: true,
 				DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
 					localSha256Sum := ""
 
